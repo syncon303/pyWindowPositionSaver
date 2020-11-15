@@ -5,22 +5,8 @@ from win32api import EnumDisplayMonitors
 from time import sleep
 import pywintypes
 
-'''
-https://stackoverflow.com/questions/8251712/is-there-a-way-to-move-a-window-to-another-monitor-using-python
 
-Use the pywin32 module to access the native Win32 API. The functions you'll need to use are:
-
-    win32gui.EnumWindows - to enumerate all of the top-level windows in the system; search for the one you 
-                want and save off the window handle
-    EnumDisplayMonitors - to enumerate all of the monitors in the system
-    GetMonitorInfo - to get the virtual display coordinates of a monitor and to determine whether or not 
-                each monitor is the primary monitor
-    MoveWindow - to move the window to the desired virtual display coordinates, using the window handle 
-                you found earlier
-
-'''
-
-debug = True
+debug = False
 
 
 def get_window_positions():
