@@ -40,19 +40,19 @@ def restore_window_positions(c_db, store_db):
 
 
 def get_displays():
-    """ 
+    """ Get display information and return width and height of desktop.
 
-    :return:
+    :return: (tuple) width, height
     """
-    _disp_all = EnumDisplayMonitors(None)
+    all_displays = EnumDisplayMonitors(None)
     # format: [(<PyHANDLE:393965>, <PyHANDLE:0>, (0, 0, 2560, 1600)),
     #          (<PyHANDLE:51059905>, <PyHANDLE:0>, (2560, 0, 5120, 1440))]
-    x, y = 0, 0
-    for _d in _disp_all:
-        _r = _d[2]  # get virtual screen box for each display
-        x = _r[2] if _r[2] > x else x  # search for max right (width) coordinate
-        y = _r[3] if _r[3] > y else y  # search for max bottom (height) coordinate
-    return x, y
+    w, h = 0, 0
+    for display in all_displays:
+        r = display[2]  # get virtual screen box for each display
+        w = r[2] if r[2] > w else w  # search for max right (width) coordinate
+        h = r[3] if r[3] > h else h  # search for max bottom (height) coordinate
+    return w, h
 
 
 def app_keeper():
